@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MusicPlaylist.swift
 //  MusicPlaylistDemo
 //
 //  Created by Giovanne Bressam on 10/05/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MusicPlaylist: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +20,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    MusicPlaylist()
 }
