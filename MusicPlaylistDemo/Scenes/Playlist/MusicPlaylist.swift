@@ -21,8 +21,8 @@ struct PlaylistHeaderView: View {
 
     var body: some View {
         Image(coverResource)
-            .imageScale(.large)
-            .foregroundStyle(.tint)
+            .aspectRatio(contentMode: .fit)
+            .shadow(color: .black, radius: 10)
     }
 }
 
