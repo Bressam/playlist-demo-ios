@@ -35,7 +35,7 @@
 		1826BA572BEECC3E00E1313D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				18C549782BEEC79400496BBC /* MusicPlaylist.swift */,
+				1826BA592BEECCB700E1313D /* Playlist */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -45,6 +45,14 @@
 			children = (
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		1826BA592BEECCB700E1313D /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				18C549782BEEC79400496BBC /* MusicPlaylist.swift */,
+			);
+			path = Playlist;
 			sourceTree = "<group>";
 		};
 		18C5496A2BEEC79400496BBC = {
