@@ -10,12 +10,19 @@ import SwiftUI
 struct MusicPlaylist: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            PlaylistHeaderView(coverResource: "album-cover-image")
         }
         .padding()
+    }
+}
+
+struct PlaylistHeaderView: View {
+    @State var coverResource: String
+
+    var body: some View {
+        Image(coverResource)
+            .imageScale(.large)
+            .foregroundStyle(.tint)
     }
 }
 
