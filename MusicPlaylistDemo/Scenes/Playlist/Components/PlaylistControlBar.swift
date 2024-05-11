@@ -35,7 +35,7 @@ struct PlaylistControlBar: View {
                     .resizable(resizingMode: .stretch)
                     .aspectRatio(contentMode: .fit)
                     .foregroundStyle(.orange)
-                    .frame(width: 30)
+                    .frame(width: 35)
             }
         }
     }

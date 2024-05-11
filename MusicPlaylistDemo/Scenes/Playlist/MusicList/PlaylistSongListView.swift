@@ -14,8 +14,9 @@ struct PlaylistSongListView: View {
         VStack {
             ForEach(playlistAlbum.musics, id: \.self) {
                 PlaylistItemView(playlistItemData: $0)
+                    .padding(.vertical, 8)
             }
-        }.padding(.top, 16)
+        }
     }
 }
 

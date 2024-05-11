@@ -11,11 +11,11 @@ struct PlaylistOwnerView: View {
     let playlistDetailsData: PlaylistDetailsData
     
     var body: some View {
-        HStack (spacing: 8) {
+        HStack(spacing: 8) {
             Image(playlistDetailsData.playlistOwnerImageResource)
                 .resizable(resizingMode: .stretch)
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 26)
+                .frame(width: 24)
                 .clipShape(Circle())
             Text("Playlist de \(playlistDetailsData.playlistOwner)")
                 .fontWeight(.bold)

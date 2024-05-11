@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MusicPlaylist: View {
-    private let headerRatioToView = 0.33
-    private let topSpacing = 18.0
+    private let headerRatioToView = 0.32
+    private let topSpacing = 14.0
     @ObservedObject var viewModel: MusicPlaylistViewModel
 
     var body: some View {
@@ -24,13 +24,13 @@ struct MusicPlaylist: View {
                         Spacer()
                     }.padding(.top, topSpacing)
                     ScrollView {
-                        VStack(alignment: .leading, spacing: 10) {
+                        VStack(alignment: .leading, spacing: 12) {
                             PlaylistControlBar()
                             PlaylistDetailsView(playlistDetailsData: viewModel.playlistAlbum!.details)
                             PlaylistSongListView(playlistAlbum: viewModel.playlistAlbum!)
                         }.padding(.top, 20)
                             .background(content: { Color(UIColor.secondarySystemBackground) })
-                            .padding(.top, (geometry.size.height * headerRatioToView) + 18)
+                            .padding(.top, (geometry.size.height * headerRatioToView) + topSpacing)
                     }.scrollIndicators(.hidden,
                                        axes: [.horizontal, .vertical])
                 }

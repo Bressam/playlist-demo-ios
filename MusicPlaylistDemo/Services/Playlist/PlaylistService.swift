@@ -8,11 +8,6 @@
 import Foundation
 
 class PlaylistService: PlaylistProvider {
-
-    private let mockedData =  PlaylistDetailsData(playlistTitle: "Test title",
-                                                  playlistDescription: "Description test description test description test description test description test description test",
-                                                  playlistOwner: "Owner name",
-                                                  playlistOwnerImageResource: "user-mock-image")
     var cachedPlaylist: PlaylistAlbum?
     let shouldMock: Bool
     
@@ -38,9 +33,9 @@ class PlaylistService: PlaylistProvider {
     }
     
     private func mockAlbumDetails() -> PlaylistDetailsData {
-        PlaylistDetailsData(playlistTitle: "Test title",
-                            playlistDescription: "Description test description test description test description test description test description test",
-                            playlistOwner: "Owner name",
+        PlaylistDetailsData(playlistTitle: "Playlist Maneira",
+                            playlistDescription: "Essa playlist é destinada aos melhores Jr.\nLearners do Planeta ADDA",
+                            playlistOwner: "Yosda",
                             playlistOwnerImageResource: "user-mock-image")
     }
     private func mockMusicList() -> [PlaylistItem] {

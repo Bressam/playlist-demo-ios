@@ -15,12 +15,13 @@ struct PlaylistItemView: View {
             Image(playlistItemData.coverResource)
                 .resizable(resizingMode: .stretch)
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 70)
+                .frame(width: 60)
             
             VStack(alignment: .leading, spacing: 2) {
                 Text(playlistItemData.musicTitle)
                     .font(.title2)
                     .fontWeight(.bold)
+                    .lineLimit(1)
                 HStack(spacing: 6) {
                     if playlistItemData.isRatedE {
                         Image(systemName: "e.square.fill")
@@ -32,18 +33,18 @@ struct PlaylistItemView: View {
                         .font(.callout)
                 }
             }
-            Spacer()
+            Spacer(minLength: 2)
             Image(systemName: "ellipsis")
                 .resizable(resizingMode: .stretch)
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 18)
+                .frame(width: 16)
         }
     }
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    PlaylistItemView(playlistItemData: .init(musicTitle: "Music 1",
-                                             coverResource: "music--smile",
+    PlaylistItemView(playlistItemData: .init(musicTitle: "Homemade Dynamite",
+                                             coverResource: "music-smile",
                                              bandName: "Band 1",
                                              isRatedE: true)
     ).padding()
