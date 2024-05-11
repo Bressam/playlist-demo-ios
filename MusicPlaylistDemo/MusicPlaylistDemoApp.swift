@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct MusicPlaylistDemoApp: App {
+    
+    // MARK: - Services
+    let playlistService: PlaylistService
+
     var body: some Scene {
         WindowGroup {
-            MusicPlaylist()
+            MusicPlaylist(viewModel: .init(playlistService: playlistService))
         }
+    }
+    
+    init() {
+        playlistService = .init(shouldMock: true)
     }
 }
