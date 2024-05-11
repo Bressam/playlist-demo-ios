@@ -16,6 +16,7 @@ struct PlaylistControlBar: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 18)
                     .foregroundStyle(Color(UIColor.label))
+                    .bold()
             }
             
             Button(action: {}) {
