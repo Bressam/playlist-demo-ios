@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "music-dog-days-are-over.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
