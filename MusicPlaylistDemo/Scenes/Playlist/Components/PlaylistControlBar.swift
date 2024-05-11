@@ -26,7 +26,7 @@ struct PlaylistControlBar: View {
                         .degrees(180),
                         axis: (x: 0.0, y: 1.0, z: 0.0)
                     )
-                    .frame(width: 18)
+                    .frame(width: 20)
                     .foregroundStyle(Color(UIColor.label))
             }
             Spacer()
