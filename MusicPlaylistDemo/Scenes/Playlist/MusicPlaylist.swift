@@ -22,10 +22,12 @@ struct MusicPlaylist: View {
                                                 .init(musicTitle: "Music 1", coverResource: "music--smile",
                                                       bandName: "Band 1", isRatedE: true)
                                               ])
-    private let topSpacing = 60.0
+    private let topSpacing = 20.0
 
     var body: some View {
         GeometryReader { geometry in
+            Color(UIColor.secondarySystemBackground)
+                .ignoresSafeArea()
             ZStack {
                 VStack {
                     PlaylistHeaderView(coverResource: "album-cover-image")
@@ -38,11 +40,11 @@ struct MusicPlaylist: View {
                         PlaylistDetailsView(playlistDetailsData: mockedData)
                         PlaylistSongListView(playlistAlbum: mockedPlaylist)
                     }.padding(.top, 20)
-                    .background(content: { Color.white })
+                        .background(content: { Color(UIColor.secondarySystemBackground) })
                     .padding(.top, (geometry.size.height * headerRatioToView) + 90)
                 }
-            }.padding(.horizontal, 22)
-            .ignoresSafeArea()
+            }
+            .padding(.horizontal, 22)
         }
     }
 }

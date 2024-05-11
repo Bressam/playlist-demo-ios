@@ -14,7 +14,7 @@ struct PlaylistHeaderView: View {
         Image(coverResource)
             .resizable(resizingMode: .stretch)
             .aspectRatio(contentMode: .fit)
-            .shadow(color: .black, radius: 10)
+            .shadow(color: .black, radius: 2)
     }
 }
 
