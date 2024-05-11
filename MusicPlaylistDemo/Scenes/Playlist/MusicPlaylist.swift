@@ -9,10 +9,19 @@ import SwiftUI
 
 struct MusicPlaylist: View {
     private let headerRatioToView = 0.3
-    private let mockedData =  PlyalistDetailsData(playlistTitle: "Test title",
+    private let mockedData =  PlaylistDetailsData(playlistTitle: "Test title",
                                                   playlistDescription: "Description test description test description test description test description test description test",
                                                   playlistOwner: "Owner name",
                                                   playlistOwnerImageResource: "user-mock-image")
+    let mockedPlaylist: PlaylistAlbum = .init(coverImageResource: "album-cover-image",
+                                              details: PlaylistDetailsData(playlistTitle: "Test title",
+                                                                           playlistDescription: "Description test description test description test description test description test description test",
+                                                                           playlistOwner: "Owner name",
+                                                                           playlistOwnerImageResource: "user-mock-image"),
+                                              musics: [
+                                                .init(musicTitle: "Music 1",
+                                                      bandName: "Band 1", isRatedE: true)
+                                              ])
     private let topSpacing = 60.0
 
     var body: some View {
@@ -27,7 +36,7 @@ struct MusicPlaylist: View {
                     VStack(alignment: .leading, spacing: 10) {
                         PlaylistControlBar()
                         PlaylistDetailsView(playlistDetailsData: mockedData)
-                        PlaylistView()
+                        PlaylistView(playlistAlbum: mockedPlaylist)
                     }.padding(.top, 20)
                     .background(content: { Color.white })
                     .padding(.top, (geometry.size.height * headerRatioToView) + 90)
@@ -38,90 +47,25 @@ struct MusicPlaylist: View {
     }
 }
 
-struct PlyalistDetailsData {
-    let playlistTitle: String
-    let playlistDescription: String
-    let playlistOwner: String
-    let playlistOwnerImageResource: String
-}
-
-struct PlaylistDetailsView: View {
-    let playlistDetailsData: PlyalistDetailsData
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(playlistDetailsData.playlistTitle)
-                .font(.title)
-                .fontWeight(.bold)
-            Text(playlistDetailsData.playlistDescription)
-                .font(.callout)
-            PlaylistOwnerView(playlistDetailsData: playlistDetailsData)
-        }
-    }
-}
-
-struct PlaylistOwnerView: View {
-    let playlistDetailsData: PlyalistDetailsData
-
-    var body: some View {
-        HStack (spacing: 8) {
-            Image(playlistDetailsData.playlistOwnerImageResource)
-                .resizable(resizingMode: .stretch)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 26)
-                .clipShape(Circle())
-            Text("Playlist de \(playlistDetailsData.playlistOwner)")
-                .fontWeight(.bold)
-                .font(.callout)
-            Spacer()
-        }
-    }
-}
-
-struct PlaylistControlBar: View {
-    var body: some View {
-        HStack {
-            Button(action: {}) {
-                Image(systemName: "arrow.down.circle.fill")
-                    .resizable(resizingMode: .stretch)
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 18)
-                    .foregroundStyle(.black)
-            }
-            
-            Button(action: {}) {
-                Image(systemName: "person.fill.badge.plus")
-                    .resizable(resizingMode: .stretch)
-                    .aspectRatio(contentMode: .fit)
-                    .rotation3DEffect(
-                        .degrees(180),
-                        axis: (x: 0.0, y: 1.0, z: 0.0)
-                    )
-                    .frame(width: 18)
-                    .foregroundStyle(.black)
-            }
-            Spacer()
-            Button(action: {}) {
-                Image(systemName: "play.circle.fill")
-                    .resizable(resizingMode: .stretch)
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(.orange)
-                    .frame(width: 30)
-            }
-        }
-    }
-}
-
 struct PlaylistView: View {
-    let listaMusicas = 1...100
+    let playlistAlbum: PlaylistAlbum
 
     var body: some View {
         VStack {
-            ForEach(listaMusicas, id: \.self) {
+            ForEach(playlistAlbum.musics, id: \.self) {
                 Text("\($0)")
                     .frame(minHeight: 30)
+                Image(systemName: "ellipsis")
             }
         }
+    }
+}
+
+struct PlaylistItemView: View {
+    let playlistItemData: PlaylistItem
+
+    var body: some View {
+        Image(systemName: "e.square.fill")
     }
 }
 
