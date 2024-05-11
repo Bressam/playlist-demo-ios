@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "music-the-kids-from-yesterday.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
