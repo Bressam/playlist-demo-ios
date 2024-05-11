@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MusicPlaylist: View {
-    private let headerRatioToView = 0.3
-    private let topSpacing = 20.0
+    private let headerRatioToView = 0.33
+    private let topSpacing = 18.0
     @ObservedObject var viewModel: MusicPlaylistViewModel
 
     var body: some View {
@@ -18,7 +18,7 @@ struct MusicPlaylist: View {
                 .ignoresSafeArea()
             if viewModel.playlistAlbum != nil {
                 ZStack {
-                    VStack {
+                    VStack(alignment: .center) {
                         PlaylistHeaderView(coverResource: "album-cover-image")
                             .frame(maxHeight: geometry.size.height * headerRatioToView)
                         Spacer()
@@ -30,7 +30,7 @@ struct MusicPlaylist: View {
                             PlaylistSongListView(playlistAlbum: viewModel.playlistAlbum!)
                         }.padding(.top, 20)
                             .background(content: { Color(UIColor.secondarySystemBackground) })
-                            .padding(.top, (geometry.size.height * headerRatioToView) + 20)
+                            .padding(.top, (geometry.size.height * headerRatioToView) + 18)
                     }.scrollIndicators(.hidden,
                                        axes: [.horizontal, .vertical])
                 }
