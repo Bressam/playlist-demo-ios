@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct MusicPlaylist: View {
-    let headerRatioToView = 0.3
-    
+    private let headerRatioToView = 0.3
+    private let mockedData =  PlyalistDetailsData(playlistTitle: "Test title",
+                                                  playlistDescription: "Description test description test description test description test description test description test",
+                                                  playlistOwner: "Owner name",
+                                                  playlistOwnerImageResource: "user-mock-image")
+    private let topSpacing = 60.0
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -17,21 +22,58 @@ struct MusicPlaylist: View {
                     PlaylistHeaderView(coverResource: "album-cover-image")
                         .frame(maxHeight: geometry.size.height * headerRatioToView)
                     Spacer()
-                }.padding(.top, 60)
+                }.padding(.top, topSpacing)
                 ScrollView {
-                    VStack(spacing: 1) {
+                    VStack(alignment: .leading, spacing: 10) {
                         PlaylistControlBar()
-                            .padding([.leading, .trailing], 22)
-                        Text("Titulo")
-                            .font(.title)
+                        PlaylistDetailsView(playlistDetailsData: mockedData)
                         PlaylistView()
-                            .frame(width: geometry.size.width)
-                    }
+                    }.padding(.top, 20)
                     .background(content: { Color.white })
-                    .padding(.top, geometry.size.height * headerRatioToView + 80)
+                    .padding(.top, (geometry.size.height * headerRatioToView) + 90)
                 }
-            }
+            }.padding(.horizontal, 22)
             .ignoresSafeArea()
+        }
+    }
+}
+
+struct PlyalistDetailsData {
+    let playlistTitle: String
+    let playlistDescription: String
+    let playlistOwner: String
+    let playlistOwnerImageResource: String
+}
+
+struct PlaylistDetailsView: View {
+    let playlistDetailsData: PlyalistDetailsData
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(playlistDetailsData.playlistTitle)
+                .font(.title)
+                .fontWeight(.bold)
+            Text(playlistDetailsData.playlistDescription)
+                .font(.callout)
+            PlaylistOwnerView(playlistDetailsData: playlistDetailsData)
+        }
+    }
+}
+
+struct PlaylistOwnerView: View {
+    let playlistDetailsData: PlyalistDetailsData
+
+    var body: some View {
+        HStack (spacing: 8) {
+            Image(playlistDetailsData.playlistOwnerImageResource)
+                .resizable(resizingMode: .stretch)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 26)
+                .clipShape(Circle())
+            Text("Playlist de \(playlistDetailsData.playlistOwner)")
+                .fontWeight(.bold)
+                .font(.callout)
+            Spacer()
         }
     }
 }
@@ -39,24 +81,33 @@ struct MusicPlaylist: View {
 struct PlaylistControlBar: View {
     var body: some View {
         HStack {
-            Image(systemName: "arrow.down.circle.fill")
-                .resizable(resizingMode: .stretch)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 18)
-            Image(systemName: "person.fill.badge.plus")
-                .resizable(resizingMode: .stretch)
-                .aspectRatio(contentMode: .fit)
-                .rotation3DEffect(
-                    .degrees(180),
-                    axis: (x: 0.0, y: 1.0, z: 0.0)
-                )
-                .frame(width: 18)
+            Button(action: {}) {
+                Image(systemName: "arrow.down.circle.fill")
+                    .resizable(resizingMode: .stretch)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 18)
+                    .foregroundStyle(.black)
+            }
+            
+            Button(action: {}) {
+                Image(systemName: "person.fill.badge.plus")
+                    .resizable(resizingMode: .stretch)
+                    .aspectRatio(contentMode: .fit)
+                    .rotation3DEffect(
+                        .degrees(180),
+                        axis: (x: 0.0, y: 1.0, z: 0.0)
+                    )
+                    .frame(width: 18)
+                    .foregroundStyle(.black)
+            }
             Spacer()
-            Image(systemName: "play.circle.fill")
-                .resizable(resizingMode: .stretch)
-                .aspectRatio(contentMode: .fit)
-                .foregroundStyle(.orange)
-                .frame(width: 30)
+            Button(action: {}) {
+                Image(systemName: "play.circle.fill")
+                    .resizable(resizingMode: .stretch)
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(.orange)
+                    .frame(width: 30)
+            }
         }
     }
 }
