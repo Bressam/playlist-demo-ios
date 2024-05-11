@@ -30,7 +30,7 @@ struct MusicPlaylist: View {
                             PlaylistSongListView(playlistAlbum: viewModel.playlistAlbum!)
                         }.padding(.top, 20)
                             .background(content: { Color(UIColor.secondarySystemBackground) })
-                            .padding(.top, (geometry.size.height * headerRatioToView) + 90)
+                            .padding(.top, (geometry.size.height * headerRatioToView) + 20)
                     }.scrollIndicators(.hidden,
                                        axes: [.horizontal, .vertical])
                 }

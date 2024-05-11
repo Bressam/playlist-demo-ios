@@ -17,7 +17,7 @@ struct PlaylistItemView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 70)
             
-            VStack(spacing: 2) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text(playlistItemData.musicTitle)
                     .font(.title2)
                     .fontWeight(.bold)
