@@ -9,6 +9,7 @@ import Foundation
 
 struct PlaylistItem: Hashable {
     let musicTitle: String
+    let coverResource: String
     let bandName: String
     let isRatedE: Bool
 }

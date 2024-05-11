@@ -19,7 +19,7 @@ struct MusicPlaylist: View {
                                                                            playlistOwner: "Owner name",
                                                                            playlistOwnerImageResource: "user-mock-image"),
                                               musics: [
-                                                .init(musicTitle: "Music 1",
+                                                .init(musicTitle: "Music 1", coverResource: "music--smile",
                                                       bandName: "Band 1", isRatedE: true)
                                               ])
     private let topSpacing = 60.0
@@ -36,7 +36,7 @@ struct MusicPlaylist: View {
                     VStack(alignment: .leading, spacing: 10) {
                         PlaylistControlBar()
                         PlaylistDetailsView(playlistDetailsData: mockedData)
-                        PlaylistView(playlistAlbum: mockedPlaylist)
+                        PlaylistSongListView(playlistAlbum: mockedPlaylist)
                     }.padding(.top, 20)
                     .background(content: { Color.white })
                     .padding(.top, (geometry.size.height * headerRatioToView) + 90)
@@ -47,25 +47,49 @@ struct MusicPlaylist: View {
     }
 }
 
-struct PlaylistView: View {
+struct PlaylistSongListView: View {
     let playlistAlbum: PlaylistAlbum
 
     var body: some View {
         VStack {
             ForEach(playlistAlbum.musics, id: \.self) {
-                Text("\($0)")
-                    .frame(minHeight: 30)
-                Image(systemName: "ellipsis")
+                PlaylistItemView(playlistItemData: $0)
             }
-        }
+        }.padding(.top, 16)
     }
 }
 
 struct PlaylistItemView: View {
     let playlistItemData: PlaylistItem
-
+    
     var body: some View {
-        Image(systemName: "e.square.fill")
+        HStack(alignment: .center, spacing: 20) {
+            Image(playlistItemData.coverResource)
+                .resizable(resizingMode: .stretch)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 70)
+            
+            VStack(spacing: 2) {
+                Text(playlistItemData.musicTitle)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                HStack(spacing: 6) {
+                    if playlistItemData.isRatedE {
+                        Image(systemName: "e.square.fill")
+                            .resizable(resizingMode: .stretch)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 16)
+                    }
+                    Text(playlistItemData.bandName)
+                        .font(.callout)
+                }
+            }
+            Spacer()
+            Image(systemName: "ellipsis")
+                .resizable(resizingMode: .stretch)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 18)
+        }
     }
 }
 
