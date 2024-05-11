@@ -15,7 +15,7 @@ struct PlaylistControlBar: View {
                     .resizable(resizingMode: .stretch)
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 18)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(Color(UIColor.label))
             }
             
             Button(action: {}) {
@@ -27,7 +27,7 @@ struct PlaylistControlBar: View {
                         axis: (x: 0.0, y: 1.0, z: 0.0)
                     )
                     .frame(width: 18)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(Color(UIColor.label))
             }
             Spacer()
             Button(action: {}) {
